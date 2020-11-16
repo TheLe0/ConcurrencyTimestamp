@@ -7,6 +7,7 @@ namespace ConcurrencyTimestamp
     class Simulator
     {
         readonly List<string> transactionList;
+        List<string[]> transactions;
         Dictionary<string, int> x;
         Dictionary<string, int> y;
         Dictionary<string, int> z;
@@ -42,12 +43,86 @@ namespace ConcurrencyTimestamp
                 { "r", 0 }, { "w", 0 }
             };
 
+            this.Normalize();
             this.Schedule();
+        }
+
+        public void Normalize()
+        {
+            transactions = new List<string[]>();
+            foreach (string element in transactionList)
+            {
+                transactions.Add(element.Trim().Split("-".ToCharArray()));
+            }
         }
 
         private void Schedule()
         {
+            int _ts;
 
+            foreach (string[] vector in transactions)
+            {
+                for(int i = 0; i < vector.Length; i++)
+                {
+                    char[] _element = vector[i].Trim().ToCharArray();
+                    
+                    switch(char.ToLower(_element[_element.Length - 1]))
+                    {
+                        case 'x':
+
+                            if (char.ToLower(_element[0]) == 'r')
+                            {
+                                Console.Write("leitura: ");
+
+                                _ts = x["r"];
+
+                            }
+                            else if (char.ToLower(_element[0]) == 'w')
+                            {
+                                Console.Write("escrita: ");
+
+                                _ts = x["w"];
+                            }
+                            Console.WriteLine("\n"); 
+                        break;
+                        case 'y':
+
+                            if (char.ToLower(_element[0]) == 'r')
+                            {
+                                Console.Write("leitura: ");
+
+                                _ts = x["r"];
+
+                            }
+                            else if (char.ToLower(_element[0]) == 'w')
+                            {
+                                Console.Write("escrita: ");
+
+                                _ts = x["w"];
+                            }
+                            Console.WriteLine("\n");
+                            break;
+
+                        case 'z':
+
+                            if (char.ToLower(_element[0]) == 'r')
+                            {
+                                Console.Write("leitura: ");
+
+                                _ts = x["r"];
+
+                            }
+                            else if (char.ToLower(_element[0]) == 'w')
+                            {
+                                Console.Write("escrita: ");
+
+                                _ts = x["w"];
+                            }
+                            Console.WriteLine("\n");
+                        break;
+                    }
+                }
+            }
         }
     }
 }
