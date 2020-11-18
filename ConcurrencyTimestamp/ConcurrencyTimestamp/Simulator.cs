@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
 
 namespace ConcurrencyTimestamp
 {
@@ -8,6 +8,7 @@ namespace ConcurrencyTimestamp
     {
         readonly List<string> transactionList;
         List<string[]> transactions;
+        List<string> timestampList;
         Dictionary<string, int> x;
         Dictionary<string, int> y;
         Dictionary<string, int> z;
@@ -50,8 +51,10 @@ namespace ConcurrencyTimestamp
         public void Normalize()
         {
             transactions = new List<string[]>();
+\
             foreach (string element in transactionList)
             {
+                //timestampList.Add(Utils.GetTimestamp());
                 transactions.Add(element.Trim().Split("-".ToCharArray()));
             }
         }
@@ -91,14 +94,14 @@ namespace ConcurrencyTimestamp
                             {
                                 Console.Write("leitura: ");
 
-                                _ts = x["r"];
+                                _ts = y["r"];
 
                             }
                             else if (char.ToLower(_element[0]) == 'w')
                             {
                                 Console.Write("escrita: ");
 
-                                _ts = x["w"];
+                                _ts = y["w"];
                             }
                             Console.WriteLine("\n");
                             break;
@@ -109,14 +112,14 @@ namespace ConcurrencyTimestamp
                             {
                                 Console.Write("leitura: ");
 
-                                _ts = x["r"];
+                                _ts = z["r"];
 
                             }
                             else if (char.ToLower(_element[0]) == 'w')
                             {
                                 Console.Write("escrita: ");
 
-                                _ts = x["w"];
+                                _ts = z["w"];
                             }
                             Console.WriteLine("\n");
                         break;
