@@ -65,7 +65,7 @@ function stagger($h)
                         
               if ($element['timestamp'] < $ts) 
               {
-                echo 'Reject '.$elemento[0] .' - '.$elemento[1].' ts: '. $elemento['timestamp'];
+                echo 'Reject '.$element[0] .' - '.$element[1].' ts: '. $element['timestamp'];
                             
                 $h = abort_transaction($h, $element['timestamp']);
                 
@@ -107,7 +107,7 @@ function stagger($h)
               }
               else 
               {
-                echo 'Accept '.$element[0] .' - '.$element[1].' ts: '. $elemento['timestamp'];
+                echo 'Accept '.$element[0] .' - '.$element[1].' ts: '. $element['timestamp'];
 
                 $y["$rw"] = $element['timestamp'];
               }
@@ -132,7 +132,7 @@ function stagger($h)
                         
               if ($element['timestamp'] < $ts) 
               {
-                echo 'Reject '.$elemento[0] .' - '.$elemento[1].' ts: '. $element['timestamp'];
+                echo 'Reject '.$element[0] .' - '.$element[1].' ts: '. $element['timestamp'];
                 
                 $h = abort_transaction($h, $element['timestamp']);
               } 
