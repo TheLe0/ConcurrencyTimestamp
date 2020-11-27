@@ -85,7 +85,7 @@ function stagger($h)
               {
                 echo 'Accept '.$element[0] .' - '.$element[1].' ts: '. $element['timestamp'];
 
-                $x["$rw"] = $elemento['timestamp'];
+                $x["$rw"] = $element['timestamp'];
               }
             }
             
@@ -101,15 +101,15 @@ function stagger($h)
                         
               if ($element['timestamp'] < $ts){
                             
-                echo 'Reject '.$elemento[0] .' - '.$elemento[1].' ts: '. $elemento['timestamp'];
+                echo 'Reject '.$element[0] .' - '.$element[1].' ts: '. $element['timestamp'];
                 
-                $h = abort_transaction($h, $elemento['timestamp']);
+                $h = abort_transaction($h, $element['timestamp']);
               }
               else 
               {
-                echo 'Accept '.$elemento[0] .' - '.$elemento[1].' ts: '. $elemento['timestamp'];
+                echo 'Accept '.$element[0] .' - '.$element[1].' ts: '. $elemento['timestamp'];
 
-                $y["$rw"] = $elemento['timestamp'];
+                $y["$rw"] = $element['timestamp'];
               }
             } 
             else if($element[0] == 'w') 
@@ -120,9 +120,9 @@ function stagger($h)
                         
               if ($element['timestamp'] < $ts) 
               {
-                echo 'Reject '.$elemento[0] .' - '.$elemento[1].' ts: '. $elemento['timestamp'];
+                echo 'Reject '.$element[0] .' - '.$element[1].' ts: '. $element['timestamp'];
                 
-                $h = abort_transaction($h, $elemento['timestamp']);
+                $h = abort_transaction($h, $element['timestamp']);
                 
                 echo '<br>';
                 continue;
@@ -132,7 +132,7 @@ function stagger($h)
                         
               if ($element['timestamp'] < $ts) 
               {
-                echo 'Reject '.$elemento[0] .' - '.$elemento[1].' ts: '. $elemento['timestamp'];
+                echo 'Reject '.$elemento[0] .' - '.$elemento[1].' ts: '. $element['timestamp'];
                 
                 $h = abort_transaction($h, $element['timestamp']);
               } 
